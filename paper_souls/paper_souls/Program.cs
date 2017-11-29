@@ -45,8 +45,8 @@ namespace paper_souls
                 Console.WriteLine("1. Paladyn");
                 Console.WriteLine("2. Wojownik");
                 Console.WriteLine("3. Mag");
-                Console.WriteLine("4. Kleryk");
-                Console.WriteLine("5. Wzmacniacz");
+                Console.WriteLine("4. Wzmacniacz");
+                Console.WriteLine("5. Templariusz");
                 Console.WriteLine("6. Druid\n");
                 Console.Write("Wybieram: ");
                 try
@@ -154,7 +154,7 @@ namespace paper_souls
     class OrkA : Przeciwnik
     {
         protected int sila;
-        bool przeladowanie = false;
+        public bool przeladowanie = false;
 
         public OrkA(int zywotnosc, string imie, int poziom, string rasa, int modyfikator_trudnosci, int sila)
         : base(zywotnosc, imie, poziom, rasa, modyfikator_trudnosci)
@@ -162,7 +162,7 @@ namespace paper_souls
             this.sila = sila;
         }
 
-        private int Strzal_Kusza()
+        public int Strzal_Kusza()
         {
             if (przeladowanie == false)
             {
@@ -176,7 +176,7 @@ namespace paper_souls
             return 1;
         }
 
-        private void Przeladowanie()
+        public void Przeladowanie()
         {
             Console.WriteLine("Ork poświęca turę aby przeładować kuszę!");
             przeladowanie = false;
@@ -440,14 +440,14 @@ namespace paper_souls
 
                 Console.WriteLine("Ork przygotowuje kuszę, Ty zaczynasz!");
                 Console.WriteLine("Co chcesz zrobić?");
-                Console.WriteLine("1. strzel kulą ognia(20obrażeń, -25 mana)");
-                Console.WriteLine("2. zamróź przeciwnika(15obrażeń, -37 mana)");
+                Console.WriteLine("1. strzel kulą ognia(20obrażeń, -25mana)");
+                Console.WriteLine("2. zamróź przeciwnika(15obrażeń, -37mana)");
                 Console.WriteLine("3. strzel piorunem(27obrażeń, -39mana)");
                 Console.WriteLine("4. odpoczynek(+15mana, +6hp)");
                 Console.WriteLine("5. wypij miksturę many(+80mana)");
-                Console.WriteLine("6. dokonaj inkantancji zaklęcia potężnego leczenia(-80mana, +75zdrowie)");
-                Console.WriteLine("Stan many:" + mag1.mana);
-                Console.WriteLine("Stan życia:" + mag1.zywotnosc);
+                Console.WriteLine("6. ulecz się(-80mana, +75zdrowie)");
+                Console.WriteLine("-->Stan many:" + mag1.mana);
+                Console.WriteLine("-->Stan życia:" + mag1.zywotnosc);
                 decyzja_maga = Convert.ToInt32(Console.ReadLine());
 
                 int obrazenia;
@@ -478,6 +478,86 @@ namespace paper_souls
                 else if (decyzja_maga == 5)
                 {
                     mag1.Wypij_mane();
+                }
+                else if (decyzja_maga == 6)
+                {
+                    mag1.Potezne_leczenie();
+                }
+
+                int x;
+                for(x = 0; x < 2; )
+                {
+                    if (mag1.zamrozenie == true)
+                    {
+                        Console.WriteLine("Ork jest zamrożony, ani drgnie!");
+                        mag1.zamrozenie = false;
+                    }
+                    else if (mag1.zamrozenie == false)
+                    {
+                        if (ork1.przeladowanie == false)
+                        {
+                            int liczba_obr = ork1.Strzal_Kusza();
+                            Console.WriteLine("Ork strzela z kuszy zadając Ci " + liczba_obr + " obrażeń.");
+                            mag1.zywotnosc = mag1.zywotnosc - liczba_obr;
+                        }
+                        else if(ork1.przeladowanie == true)
+                        {
+                            ork1.Przeladowanie();
+                        }
+                    }
+                    if(mag1.zywotnosc <= 0)
+                    {
+                        Console.WriteLine("Zginąłeś!");
+                    }
+                    Console.WriteLine("Co chcesz zrobić?");
+                    Console.WriteLine("1. strzel kulą ognia(20obrażeń, -25mana)");
+                    Console.WriteLine("2. zamróź przeciwnika(15obrażeń, -37mana)");
+                    Console.WriteLine("3. strzel piorunem(27obrażeń, -39mana)");
+                    Console.WriteLine("4. odpoczynek(+15mana, +6hp)");
+                    Console.WriteLine("5. wypij miksturę many(+80mana)");
+                    Console.WriteLine("6. ulecz się(-80mana, +75zdrowie)");
+                    Console.WriteLine("-->Stan many:" + mag1.mana);
+                    Console.WriteLine("-->Stan życia:" + mag1.zywotnosc);
+                    decyzja_maga = Convert.ToInt32(Console.ReadLine());
+
+                    int damage;
+                    if (decyzja_maga == 1 && mag1.mana >= 25)
+                    {
+                        damage = mag1.Kula_ognia();
+                        ork1.zywotnosc = ork1.zywotnosc - damage;
+                        Console.WriteLine("Stan życia orczego kusznika: " + ork1.zywotnosc + " HP");
+                    }
+                    else if (decyzja_maga == 2 && mag1.mana >= 37)
+                    {
+                        damage = mag1.Mrozenie();
+                        ork1.zywotnosc = ork1.zywotnosc - damage;
+                        Console.WriteLine("Zamroziłeś przeciwnika powodując, że nie może on wykonać swojej tury!");
+                        Console.WriteLine("Stan życia orczego kusznika: " + ork1.zywotnosc + " HP");
+                    }
+                    else if (decyzja_maga == 3 && mag1.mana >= 39)
+                    {
+                        damage = mag1.Piorun();
+                        ork1.zywotnosc = ork1.zywotnosc - damage;
+                        Console.WriteLine("Stan życia orczego kusznika: " + ork1.zywotnosc + " HP");
+                    }
+                    else if (decyzja_maga == 4)
+                    {
+                        mag1.Odpocznij();
+                        Console.WriteLine("Poświęciłeś swoją turę żeby odpocząć odzyskując trochę zdrowia i many!");
+                    }
+                    else if (decyzja_maga == 5)
+                    {
+                        mag1.Wypij_mane();
+                    }
+                    else if (decyzja_maga == 6)
+                    {
+                        mag1.Potezne_leczenie();
+                    }
+                    if(ork1.zywotnosc <= 0)
+                    {
+                        Console.WriteLine("Pokonałeś orka kusznika!");
+                        break;
+                    }
                 }
             }
             Console.ReadKey();
