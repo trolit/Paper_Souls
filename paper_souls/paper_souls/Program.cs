@@ -49,7 +49,16 @@ namespace paper_souls
                 Console.WriteLine("5. Wzmacniacz");
                 Console.WriteLine("6. Druid\n");
                 Console.Write("Wybieram: ");
-                wybierz_bohatera = Convert.ToInt32(Console.ReadLine());
+                try
+                {
+                    wybierz_bohatera = Convert.ToInt32(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.WriteLine("\nPodczas działania programu wystąpił błąd!");
+                    Console.WriteLine("Podano błędne dane na wejściu wybierz_bohatera\n");
+                    return 0;
+                }
 
                 if (wybierz_bohatera == 1)
                 {
@@ -95,8 +104,9 @@ namespace paper_souls
                 }
                 catch
                 {
-                    Console.WriteLine("\n~ERROR");
-                    Console.WriteLine("~Podano zły format danych!!\n");
+                    Console.WriteLine("\nPodczas działania programu wystąpił błąd!");
+                    Console.WriteLine("Podano błędne dane na wejściu wybierz_bohatera_2\n");
+                    return 0;
                 }
                 if (wybierz_bohatera == wybierz_bohatera_2)
                 {
