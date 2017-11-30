@@ -9,3 +9,7 @@
 * Data rozpoczęcia: 27.11.17
 * Wykorzystany język: C#
 * Wykonanie w: Console Application, Visual Studio 2017 
+
+###########################################################################
+
+

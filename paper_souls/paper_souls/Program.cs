@@ -133,6 +133,12 @@ namespace paper_souls
                 }
             }
             #endregion
+            #region Przygoda Wojownika
+            else if(wybor_postaci == 2)
+            {
+
+            }
+            #endregion
             #region Przygoda Maga
             else if (wybor_postaci == 3)
             {
