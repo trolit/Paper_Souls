@@ -141,7 +141,7 @@ namespace paper_souls
                     Console.WriteLine("___________________________________________________________\n");
                     Console.WriteLine("Marc 'Bezlitosny' - Templariusz(Człowiek)");
                     Console.WriteLine("\nGłówne cechy: \n");
-                    Console.WriteLine("+ potrafi wyczuć poziom życia wroga");
+                    Console.WriteLine("+ potrafi wyczuć słaby punkt wroga");
                     Console.WriteLine("+ potrafi szybko wykończyć wroga(poniżej pewnego progu życia)");
                     Console.WriteLine("+ posiada zdolność riposty wielką tarczą pokrytą kolcami");
                     Console.WriteLine("\nKarta postaci: \n");
