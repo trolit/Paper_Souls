@@ -22,6 +22,8 @@ namespace paper_souls
             Mag mag1 = new Mag(110, "Harval", 2, "Żaba", "Grzesznik", 125, 3, 9, 3, "Magia wody");
             OrkA ork1 = new OrkA(125, "Ork - Kusznik", 2, "orkowate", 2, 10);
             Szczur szczur1 = new Szczur(100, "Szczur", 2, "szczurowate", 2, 3);
+            Bazyliszek bazyliszek1 = new Bazyliszek(150, "Bazyliszek", 3, "Gady", 10);
+            Wojownik wojownik1 = new Wojownik(200, "Drakom", 4, "Smok", "Tarczownik", 20, 12, 2, 1, 115);
             #endregion
 
             int wybor_postaci = wybor_bohatera.Wybor_Bohatera();
@@ -136,7 +138,32 @@ namespace paper_souls
             #region Przygoda Wojownika
             else if(wybor_postaci == 2)
             {
+                Console.WriteLine("///////////////////////////////////////////////////////////");
+                Console.WriteLine("Napotkales przeciwnika -> " + bazyliszek1.imie);
+                Console.WriteLine("Co wiesz o przeciwniku?\nPoziom: " + bazyliszek1.poziom + "\nRasa: " + bazyliszek1.rasa);
+                Console.WriteLine("\nwalczysz(wpisz 1) czy uciekasz(wpisz 0)?");
+                int decyzja_woj = Convert.ToInt32(Console.ReadLine());
 
+                if(decyzja_woj == 1)
+                {
+                    Console.WriteLine("Bazyliszek jest od Ciebie szybszy! Zaczyna pierwszy!");
+                    int licz_obrazenia = bazyliszek1.Ukaszenie();
+                    Console.WriteLine("Bazyliszek zadaje " + licz_obrazenia + " obrażeń!");
+                    wojownik1.zywotnosc = wojownik1.zywotnosc - licz_obrazenia;
+                    Console.WriteLine("Twoja kolej, co chcesz zrobić?");
+                    Console.WriteLine("1. uderz oburącz(10-35obrażeń, -27kondycja)");
+                    Console.WriteLine("2. ulecz się(-30mana, +30-45hp)");
+                    Console.WriteLine("3. modlitwa(++obrażenia na następną turę, +5hp)");
+                    Console.WriteLine("4. odpoczynek(+15mana, +6hp)");
+                    Console.WriteLine("-> Stan many: " + wojownik1.mana);
+                    Console.WriteLine("-> Stan życia: " + wojownik1.zywotnosc);
+                    Console.WriteLine("-> Stan kondycji: " + wojownik1.kondycja);
+                    int decyzja_teraz = Convert.ToInt32(Console.ReadLine());
+                }
+                else
+                {
+                    Console.WriteLine("Uciekłeś!");
+                }
             }
             #endregion
             #region Przygoda Maga

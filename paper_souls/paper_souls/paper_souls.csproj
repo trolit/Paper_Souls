@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bazyliszek.cs" />
     <Compile Include="Bohater.cs" />
     <Compile Include="Mag.cs" />
     <Compile Include="OrkA.cs" />

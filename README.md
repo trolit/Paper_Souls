@@ -12,4 +12,17 @@
 
 ###########################################################################
 
+Wciel się w rolę jednego z bohaterów:
 
+- Paladyn
+- Wojownik
+- Mag
+- Wzmacniacz
+- Templariusz
+- Druid
+- Snajper
+- Kusznik
+- Włócznik okrągłego stołu
+
+Każda z unikalnymi cechami...
+i pokonaj przeciwników, którzy staną na Twojej drodze!
