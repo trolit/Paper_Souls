@@ -20,10 +20,12 @@ namespace paper_souls
             Postac wybor_bohatera = new Postac();
             Paladyn paladyn1 = new Paladyn(100, 160, "Horx", 3, "Czlowiek", "Szczodry", 6, 7, 2);
             Mag mag1 = new Mag(110, "Harval", 2, "Żaba", "Grzesznik", 125, 3, 9, 3, "Magia wody");
-            OrkA ork1 = new OrkA(125, "Ork - Kusznik", 2, "orkowate", 2, 10);
-            Szczur szczur1 = new Szczur(100, "Szczur", 2, "szczurowate", 2, 3);
+            OrkA ork1 = new OrkA(125, "Ork - Kusznik", 2, "Orkowate", 2, 10);
+            Szczur szczur1 = new Szczur(100, "Szczur", 2, "Szczurowate", 2, 3);
             Bazyliszek bazyliszek1 = new Bazyliszek(150, "Bazyliszek", 3, "Gady", 10);
             Wojownik wojownik1 = new Wojownik(200, "Drakom", 4, "Smok", "Tarczownik", 20, 12, 2, 1, 115);
+            Wilk wilk1 = new Wilk(140, "Wilk", 3, "Psowate", 4);
+            Tarczownik tarczownik1 = new Tarczownik(180, "Tarczownik", 5, "Nieumarły", 4);
             #endregion
 
             int wybor_postaci = wybor_bohatera.Wybor_Bohatera();

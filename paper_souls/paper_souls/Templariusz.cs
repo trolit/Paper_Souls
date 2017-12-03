@@ -8,7 +8,7 @@ namespace paper_souls
 {
     class Templariusz : Bohater, IRandomize
     {
-        public bool zaatakowany;
+        public bool zaatakowany = false;
         public bool slabosc = false;
 
         public Templariusz(int mana, int zywotnosc, string imie, int poziom, string rasa, string tytul, int inteligencja, int sila, int zrecznosc)
@@ -17,18 +17,41 @@ namespace paper_souls
 
         }
 
-        public int Riposta()
+        public int Uderz_Mieczem()
+        {
+            if(slabosc == false)
+            {
+                return random();
+            }
+            else if(slabosc == true)
+            {
+                Console.WriteLine("Uderzasz w słaby punkt zadając dodatkowe obrażenia!");
+                return random() + 11;
+            }
+            return 1;
+        }
+
+        public int Riposta(int obrazenia)
         {
             if (zaatakowany == true)
             {
-                return random();
+                return obrazenia / 2;
+            }
+            return 1;
+        }
+
+        public int Sciecie(int zycie)
+        {
+            if(zycie <= 30)
+            {
+                return 30; 
             }
 
             return 1;
         }
-
         public void Wyczuj_slabosc()
         {
+            Console.WriteLine("Odszukujesz słaby punkt w przeciwniku!");
             slabosc = true;
         }
 

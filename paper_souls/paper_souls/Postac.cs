@@ -143,7 +143,7 @@ namespace paper_souls
                     Console.WriteLine("\nGłówne cechy: \n");
                     Console.WriteLine("+ potrafi wyczuć słaby punkt wroga");
                     Console.WriteLine("+ potrafi szybko wykończyć wroga(poniżej pewnego progu życia)");
-                    Console.WriteLine("+ posiada zdolność riposty wielką tarczą pokrytą kolcami");
+                    Console.WriteLine("+ posiada zdolność riposty wielką tarczą pokrytą kolcami(odbija połowę obrażeń)");
                     Console.WriteLine("\nKarta postaci: \n");
                     Console.WriteLine("Poziom: 3");
                     Console.WriteLine("Siła: 10");
@@ -159,9 +159,9 @@ namespace paper_souls
                     Console.WriteLine("___________________________________________________________\n");
                     Console.WriteLine("Malfurion 'Sędzia' - Druid(Człowiek)");
                     Console.WriteLine("\nGłówne cechy: \n");
-                    Console.WriteLine("+ potrafi przekstrzałcić się w postać wilkołaka");
                     Console.WriteLine("+ pazury pozwalają mu wywołać krwawienie u przeciwnika");
                     Console.WriteLine("+ dysponuje zaklęciami ziemi");
+                    Console.WriteLine("+ może przywołać wilka aby mu pomógł");
                     Console.WriteLine("\nKarta postaci: \n");
                     Console.WriteLine("Poziom: 5");
                     Console.WriteLine("Siła: 6");
