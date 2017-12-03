@@ -89,7 +89,7 @@ namespace paper_souls
                     Console.WriteLine("+ duża wytrzymałość organizmu");
                     Console.WriteLine("+ duża odporność na ciosy");
                     Console.WriteLine("+ zdolność zionięcia ogniem");
-                    Console.WriteLine("+ umiejętność szarży z doskokiem");
+                    Console.WriteLine("+ umiejętność szarży z doskokiem(podwójny atak)");
                     Console.WriteLine("+ ze względu na ciężką broń, Drakom traci energię");
                     Console.WriteLine("\nKarta postaci: \n");
                     Console.WriteLine("Poziom: 4");

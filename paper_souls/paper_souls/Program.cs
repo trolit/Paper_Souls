@@ -152,13 +152,125 @@ namespace paper_souls
                     wojownik1.zywotnosc = wojownik1.zywotnosc - licz_obrazenia;
                     Console.WriteLine("Twoja kolej, co chcesz zrobić?");
                     Console.WriteLine("1. uderz oburącz(10-35obrażeń, -27kondycja)");
-                    Console.WriteLine("2. ulecz się(-30mana, +30-45hp)");
-                    Console.WriteLine("3. modlitwa(++obrażenia na następną turę, +5hp)");
-                    Console.WriteLine("4. odpoczynek(+15mana, +6hp)");
+                    Console.WriteLine("2. wyciszenie(+40kondycja)");
+                    Console.WriteLine("3. zionięcie ogniem(10-20obrażeń, -10mana)");
+                    Console.WriteLine("4. szarża(8-40obrażeń, -35kondycja)");
+                    Console.WriteLine("5. odpoczynek(+6hp, +15mana)");
                     Console.WriteLine("-> Stan many: " + wojownik1.mana);
                     Console.WriteLine("-> Stan życia: " + wojownik1.zywotnosc);
                     Console.WriteLine("-> Stan kondycji: " + wojownik1.kondycja);
+                    Console.WriteLine("-> Stan życia wroga: " + bazyliszek1.zywotnosc);
                     int decyzja_teraz = Convert.ToInt32(Console.ReadLine());
+
+                    if (decyzja_teraz == 1 && wojownik1.kondycja >= 27)
+                    {
+                        licz_obrazenia = wojownik1.Uderzenie_oburacz();
+                        bazyliszek1.zywotnosc = bazyliszek1.zywotnosc - licz_obrazenia;
+                        Console.WriteLine("Zadałeś " + licz_obrazenia + " obrażeń!");
+                    }
+                    else if (decyzja_teraz == 2)
+                    {
+                        wojownik1.Wyciszenie();
+                    }
+                    else if (decyzja_teraz == 3 && wojownik1.mana >= 10)
+                    {
+                        wojownik1.Zioniecie_Ogniem();
+                    }
+                    else if(decyzja_teraz == 4 && wojownik1.kondycja >= 35)
+                    {
+                        licz_obrazenia = wojownik1.Szarza();
+                        bazyliszek1.zywotnosc = bazyliszek1.zywotnosc - licz_obrazenia;
+                        Console.WriteLine("Zadałeś " + licz_obrazenia + " obrażeń!");
+                    }
+                    else if(decyzja_teraz == 5)
+                    {
+                        wojownik1.Odpocznij();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Nie udało się wykonać tego ruchu! Tracisz turę!");
+                    }
+
+                    int x;
+                    for(x = 0; x < 2;)
+                    {
+                        if(wojownik1.szarzowanie == true)
+                        {
+                            wojownik1.szarzowanie = false;
+                        }
+                        else if(wojownik1.szarzowanie == false)
+                        {
+                            if (bazyliszek1.skamieniowany == false && bazyliszek1.stan_many >= 10)
+                            {
+                                bazyliszek1.Skamieniowanie();
+                            }
+                            else
+                            {
+                                licz_obrazenia = bazyliszek1.Ukaszenie();
+                                wojownik1.zywotnosc = wojownik1.zywotnosc - licz_obrazenia;
+                                Console.WriteLine("Bazyliszek zadaje " + licz_obrazenia + " obrażeń!");
+                            }
+                        }
+                        if(wojownik1.zywotnosc <= 0)
+                        {
+                            Console.WriteLine("Zginąłeś!");
+                            break;
+                        }
+
+                        if (bazyliszek1.skamieniowany == true)
+                        {
+                            bazyliszek1.skamieniowany = false;
+                            Console.WriteLine("Zostałeś skamieniowany tuż przed wykonaniem ataku!");
+                        }
+                        else if (bazyliszek1.skamieniowany == false)
+                        {
+                            Console.WriteLine("Twoja kolej, co chcesz zrobić?");
+                            Console.WriteLine("1. uderz oburącz(10-35obrażeń, -27kondycja)");
+                            Console.WriteLine("2. wyciszenie(+40kondycja)");
+                            Console.WriteLine("3. zionięcie ogniem(10-20obrażeń, -10mana)");
+                            Console.WriteLine("4. szarża(8-40obrażeń, -35kondycja)");
+                            Console.WriteLine("5. odpoczynek(+6hp, +15mana)");
+                            Console.WriteLine("-> Stan many: " + wojownik1.mana);
+                            Console.WriteLine("-> Stan życia: " + wojownik1.zywotnosc);
+                            Console.WriteLine("-> Stan kondycji: " + wojownik1.kondycja);
+                            Console.WriteLine("-> Stan życia wroga: " + bazyliszek1.zywotnosc);
+                            decyzja_teraz = Convert.ToInt32(Console.ReadLine());
+
+                            if (decyzja_teraz == 1 && wojownik1.kondycja >= 27)
+                            {
+                                licz_obrazenia = wojownik1.Uderzenie_oburacz();
+                                bazyliszek1.zywotnosc = bazyliszek1.zywotnosc - licz_obrazenia;
+                                Console.WriteLine("Zadałeś " + licz_obrazenia + " obrażeń!");
+                            }
+                            else if (decyzja_teraz == 2)
+                            {
+                                wojownik1.Wyciszenie();
+                            }
+                            else if (decyzja_teraz == 3 && wojownik1.mana >= 10)
+                            {
+                                wojownik1.Zioniecie_Ogniem();
+                            }
+                            else if (decyzja_teraz == 4 && wojownik1.kondycja >= 35)
+                            {
+                                licz_obrazenia = wojownik1.Szarza();
+                                bazyliszek1.zywotnosc = bazyliszek1.zywotnosc - licz_obrazenia;
+                                Console.WriteLine("Zadałeś " + licz_obrazenia + " obrażeń!");
+                            }
+                            else if (decyzja_teraz == 5)
+                            {
+                                wojownik1.Odpocznij();
+                            }
+                            else
+                            {
+                                Console.WriteLine("Nie udało się wykonać tego ruchu! Tracisz turę!");
+                            }
+                        }
+                        if(bazyliszek1.zywotnosc <= 0)
+                        {
+                            Console.WriteLine("Bazyliszek pokonany!");
+                            break;
+                        }
+                    }
                 }
                 else
                 {

@@ -13,6 +13,7 @@
 ###########################################################################
 
 Wciel się w rolę jednego z bohaterów:
+(każda ma unikalne cechy)
 
 - Paladyn
 - Wojownik
@@ -24,5 +25,5 @@ Wciel się w rolę jednego z bohaterów:
 - Kusznik
 - Włócznik okrągłego stołu
 
-Każda z unikalnymi cechami...
-i pokonaj przeciwników, którzy staną na Twojej drodze!
+i wywalcz sobie przetrwanie!
+

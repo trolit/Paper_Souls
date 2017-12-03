@@ -9,6 +9,7 @@ namespace paper_souls
     class Wojownik : Bohater, IRandomize
     {
         public int kondycja;
+        public bool szarzowanie = false;
 
         public Wojownik(int zywotnosc, string imie, int poziom, string rasa, string tytul, int mana, int sila, int inteligencja, int zrecznosc, int kondycja)
         : base(zywotnosc, imie, poziom, rasa, tytul, mana, sila, inteligencja, zrecznosc)
@@ -35,6 +36,7 @@ namespace paper_souls
 
         public int Szarza()
         {
+            szarzowanie = true;
             this.kondycja = this.kondycja - 35;
             return random_szarza();
         }
