@@ -27,7 +27,7 @@ namespace paper_souls
 
         public int Wybor_Bohatera()
         {
-            Console.WriteLine("------------------------->Witaj w grze Paper Souls!<-------------------------");
+            Console.WriteLine("------------------------->Witaj w grze Paper Souls!<--------------------------");
             Console.Write("Pewnie końcówka 'Souls', trochę już zdradza o co chodzi w tej grze, jeśli jednak");
             Console.Write("nie masz nadal zielonego pojęcia(nie martw się), już wyjaśniamy. Jest to gra typu ");
             Console.Write("walka z przeciwnikami ale turowa, i ... tekstowa :0. Od Ciebie zależeć będzie życie ");
@@ -204,7 +204,7 @@ namespace paper_souls
                     Console.WriteLine("Siła: 10");
                     Console.WriteLine("Zręczność: 3");
                     Console.WriteLine("Inteligencja: 5");
-                    Console.WriteLine("Żywotność(HP): 300");
+                    Console.WriteLine("Żywotność(HP): 500");
                     Console.WriteLine("___________________________________________________________");
                 }
                 else if (wybierz_bohatera == 9)

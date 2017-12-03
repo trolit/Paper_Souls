@@ -26,6 +26,9 @@ namespace paper_souls
             Wojownik wojownik1 = new Wojownik(200, "Drakom", 4, "Smok", "Tarczownik", 20, 12, 2, 1, 115);
             Wilk wilk1 = new Wilk(140, "Wilk", 3, "Psowate", 4);
             Tarczownik tarczownik1 = new Tarczownik(180, "Tarczownik", 5, "Nieumarły", 4);
+            OrkB ork2 = new OrkB(220, "Ork - Wojownik", 4, "Orkowate", 4, 10);
+            OrkC ork3 = new OrkC(120, "Ork - Złodziej", 3, "Orkowate", 5, 6);
+            Wzmacniacz wzmacniacz1 = new Wzmacniacz(200, "Paseur", 4, "Rekin", "Straszny", 90, 3, 6, 6, 0);
             #endregion
 
             int wybor_postaci = wybor_bohatera.Wybor_Bohatera();
@@ -289,6 +292,11 @@ namespace paper_souls
                 Console.WriteLine("\nwalczysz(wpisz 1) czy uciekasz(wpisz 0)?");
                 int decyzja_maga = Convert.ToInt32(Console.ReadLine());
 
+                if(decyzja_maga == 0)
+                {
+                    Console.WriteLine("Nie możesz uciec!");
+                }
+
                 Console.WriteLine("Ork przygotowuje kuszę, Ty zaczynasz!");
                 Console.WriteLine("Co chcesz zrobić?");
                 Console.WriteLine("1. strzel kulą ognia(20obrażeń, -25mana)");
@@ -412,6 +420,176 @@ namespace paper_souls
                 }
             }
             #endregion
+            #region Przygoda Wzmacniacza
+            else if(wybor_postaci == 4)
+            {
+                Console.WriteLine("///////////////////////////////////////////////////////////");
+                Console.WriteLine("Napotkales przeciwnika -> " + ork2.imie);
+                Console.WriteLine("Co wiesz o przeciwniku?\nPoziom: " + ork2.poziom + "\nRasa: " + ork2.rasa + "\nTrudnosc: " + ork2.modyfikator_trudnosci);
+                Console.WriteLine("\nwalczysz(wpisz 1) czy uciekasz(wpisz 0)?");
+                int decyzja_wzmaka = Convert.ToInt32(Console.ReadLine());
+
+                if (decyzja_wzmaka == 0)
+                {
+                    Console.WriteLine("Nie możesz uciec!");
+                }
+
+                Console.WriteLine("Jesteś szybszy od orka, zaczynasz pierwszy!");
+                Console.WriteLine("Co chcesz zrobić?");
+                if(wzmacniacz1.poziom_wzmocnienia == 0)
+                {
+                    Console.WriteLine("1. uderz toporem(9-14obrażeń)");
+                }
+                else if(wzmacniacz1.poziom_wzmocnienia == 1)
+                {
+                    Console.WriteLine("1. uderz toporem(15-28obrażeń)");
+                }
+                else if (wzmacniacz1.poziom_wzmocnienia == 2)
+                {
+                    Console.WriteLine("1. uderz toporem(30-45obrażeń)");
+                }
+                else if (wzmacniacz1.poziom_wzmocnienia == 3)
+                {
+                    Console.WriteLine("1. uderz toporem(45-65obrażeń)");
+                }
+                Console.WriteLine("2. wzmocnienie(+1wzmocnienie, +5hp, +5mana)");
+                Console.WriteLine("3. spróbuj uniknąć następny atak(50% szans powodzenia)");
+                Console.WriteLine("4. transferuj magię(następny atak +20obrażeń, -40mana)");
+                Console.WriteLine("5. stwórz miksturę leczenia(+1mikstura)");
+                Console.WriteLine("6. wypij miksturę leczenia(+25hp, -1mikstura)");
+                Console.WriteLine("7. odpoczynek(+6hp, +15mana)");
+                Console.WriteLine("-> Stan many: " + wzmacniacz1.mana);
+                Console.WriteLine("-> Stan życia: " + wzmacniacz1.zywotnosc);
+                Console.WriteLine("-> Stan wzmocnienia: " + wzmacniacz1.poziom_wzmocnienia);
+                Console.WriteLine("-> Stan zdrowia przeciwnika: " + ork2.zywotnosc);
+                decyzja_wzmaka = Convert.ToInt32(Console.ReadLine());
+                int liczba_obr;
+
+                if(decyzja_wzmaka == 1)
+                {
+                    liczba_obr = wzmacniacz1.Uderz_Toporem();
+                    ork2.zywotnosc = ork2.zywotnosc - liczba_obr;
+                    Console.WriteLine("Zadajesz " + liczba_obr + " obrażeń!");
+                }
+                else if(decyzja_wzmaka == 2)
+                {
+                    Console.WriteLine("Wzmacniasz poziom o +1");
+                    wzmacniacz1.Wzmocnienie();
+                }
+                else if(decyzja_wzmaka == 3)
+                {
+                    wzmacniacz1.Unik_Ataku();
+                }
+                else if(decyzja_wzmaka == 4)
+                {
+                    Console.WriteLine("Transferujesz część magii aby wzmocnić następny atak!");
+                    wzmacniacz1.Transfer_Magii();
+                }
+                else if(decyzja_wzmaka == 5)
+                {
+                    Console.WriteLine("Poświęcasz turę aby stworzyć małą miksturę leczenia!");
+                    wzmacniacz1.Tworz_miksture();
+                }
+                else if(decyzja_wzmaka == 6)
+                {
+                    wzmacniacz1.Wypij_miksture();
+                }
+                else if(decyzja_wzmaka == 7)
+                {
+                    wzmacniacz1.Odpocznij();
+                }
+
+                int x;
+                for(x = 0; x < 2; )
+                {
+                    Console.WriteLine("Tura orka!");
+                    if(wzmacniacz1.unik == true)
+                    {
+                        Console.WriteLine("Ork chybił!");
+                        wzmacniacz1.unik = false;
+                    }
+                    else if(wzmacniacz1.unik == false)
+                    {
+                        liczba_obr = ork2.Atak_Mieczem();
+                        Console.WriteLine("Ork Wojownik zadaje Ci " + liczba_obr + " obrażeń!");
+                        wzmacniacz1.zywotnosc = wzmacniacz1.zywotnosc - liczba_obr;
+                    }
+                    if(wzmacniacz1.zywotnosc <= 0)
+                    {
+                        Console.WriteLine("Nie żyjesz!");
+                        break;
+                    }
+                    Console.WriteLine("Twoja kolej!");
+                    Console.WriteLine("Co chcesz zrobić?");
+                    if (wzmacniacz1.poziom_wzmocnienia == 0)
+                    {
+                        Console.WriteLine("1. uderz toporem(9-14obrażeń)");
+                    }
+                    else if (wzmacniacz1.poziom_wzmocnienia == 1)
+                    {
+                        Console.WriteLine("1. uderz toporem(15-28obrażeń)");
+                    }
+                    else if (wzmacniacz1.poziom_wzmocnienia == 2)
+                    {
+                        Console.WriteLine("1. uderz toporem(30-45obrażeń)");
+                    }
+                    else if (wzmacniacz1.poziom_wzmocnienia == 3)
+                    {
+                        Console.WriteLine("1. uderz toporem(45-65obrażeń)");
+                    }
+                    Console.WriteLine("2. wzmocnienie(+1wzmocnienie, +5hp, +5mana)");
+                    Console.WriteLine("3. spróbuj uniknąć następny atak(50% szans powodzenia)");
+                    Console.WriteLine("4. transferuj magię(następny atak +20obrażeń, -40mana)");
+                    Console.WriteLine("5. stwórz miksturę leczenia(+1mikstura)");
+                    Console.WriteLine("6. wypij miksturę leczenia(+25hp, -1mikstura)");
+                    Console.WriteLine("7. odpoczynek(+6hp, +15mana)");
+                    Console.WriteLine("-> Stan many: " + wzmacniacz1.mana);
+                    Console.WriteLine("-> Stan życia: " + wzmacniacz1.zywotnosc);
+                    Console.WriteLine("-> Stan wzmocnienia: " + wzmacniacz1.poziom_wzmocnienia);
+                    decyzja_wzmaka = Convert.ToInt32(Console.ReadLine());
+
+                    if (decyzja_wzmaka == 1)
+                    {
+                        liczba_obr = wzmacniacz1.Uderz_Toporem();
+                        ork2.zywotnosc = ork2.zywotnosc - liczba_obr;
+                        Console.WriteLine("Zadajesz " + liczba_obr + " obrażeń!");
+                    }
+                    else if (decyzja_wzmaka == 2)
+                    {
+                        Console.WriteLine("Wzmacniasz poziom o +1");
+                        wzmacniacz1.Wzmocnienie();
+                    }
+                    else if (decyzja_wzmaka == 3)
+                    {
+                        wzmacniacz1.Unik_Ataku();
+                    }
+                    else if (decyzja_wzmaka == 4)
+                    {
+                        Console.WriteLine("Transferujesz swoją magię aby wzmocnić następny atak!");
+                        wzmacniacz1.Transfer_Magii();
+                    }
+                    else if (decyzja_wzmaka == 5)
+                    {
+                        Console.WriteLine("Poświęcasz swoją turę aby stworzyć małą miksturę leczenia!");
+                        wzmacniacz1.Tworz_miksture();
+                    }
+                    else if (decyzja_wzmaka == 6)
+                    {
+                        wzmacniacz1.Wypij_miksture();
+                    }
+                    else if (decyzja_wzmaka == 7)
+                    {
+                        wzmacniacz1.Odpocznij();
+                    }
+                    if(ork2.zywotnosc <= 0)
+                    {
+                        Console.WriteLine("Pokonałeś orka wojownika!");
+                        break;
+                    }
+                }
+            }
+#endregion
+
             Console.ReadKey();
         }
     }

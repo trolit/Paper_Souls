@@ -8,7 +8,7 @@ namespace paper_souls
 {
     class Wzmacniacz : Bohater, IRandomize
     {
-        public int poziom_wzmocnienia;
+        public int poziom_wzmocnienia = 0;
         public int stan_mikstur = 0;
         public bool unik = false;
         public bool transferowana_energia = false;
@@ -42,7 +42,18 @@ namespace paper_souls
 
         public void Unik_Ataku()
         {
-            unik = true;
+            Random random = new Random();
+            int szansa_uniku = random.Next(1, 10);
+            if(szansa_uniku == 2 || szansa_uniku == 5 || szansa_uniku == 7 || szansa_uniku == 9 || szansa_uniku == 1)
+            {
+                Console.WriteLine("Udaje Ci się uniknąć następnego ataku!");
+                unik = true;
+            }
+            else
+            {
+                Console.WriteLine("Próba uniknięcia następnego ataku nie powiodła sie!");
+            }
+            
         }
 
         public void Transfer_Magii()
