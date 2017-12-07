@@ -37,7 +37,7 @@ namespace paper_souls
             {
                 return obrazenia / 2;
             }
-            return 1;
+            return 0;
         }
 
         public int Sciecie(int zycie)
@@ -46,13 +46,24 @@ namespace paper_souls
             {
                 return 30; 
             }
+            else
+            {
+                Console.WriteLine("Z determinacją próbujesz wykończyć przeciwnika jednym ciosem lecz Ci się to nie udaje!");
+            }
 
             return 1;
         }
+
         public void Wyczuj_slabosc()
         {
             Console.WriteLine("Odszukujesz słaby punkt w przeciwniku!");
             slabosc = true;
+        }
+
+        public int Rzut_Toporem()
+        {
+            this.mana = this.mana - 20;
+            return 15;
         }
 
         public int random()

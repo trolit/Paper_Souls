@@ -28,7 +28,9 @@ namespace paper_souls
             Tarczownik tarczownik1 = new Tarczownik(180, "Tarczownik", 5, "Nieumarły", 4);
             OrkB ork2 = new OrkB(220, "Ork - Wojownik", 4, "Orkowate", 4, 10);
             OrkC ork3 = new OrkC(120, "Ork - Złodziej", 3, "Orkowate", 5, 6);
-            Wzmacniacz wzmacniacz1 = new Wzmacniacz(200, "Paseur", 4, "Rekin", "Straszny", 90, 3, 6, 6, 0);
+            Wzmacniacz wzmacniacz1 = new Wzmacniacz(165, "Paseur", 4, "Rekin", "Straszny", 90, 3, 6, 6, 0);
+            Templariusz templar1 = new Templariusz(94, 129, "Marc", 3, "Człowiek", "Bezlitosny", 2, 10, 1);
+            Szkielet szkielet1 = new Szkielet(130, "Szkielet", 4, "Nieumarli", 5);
             #endregion
 
             int wybor_postaci = wybor_bohatera.Wybor_Bohatera();
@@ -514,11 +516,13 @@ namespace paper_souls
                         Console.WriteLine("Ork Wojownik zadaje Ci " + liczba_obr + " obrażeń!");
                         wzmacniacz1.zywotnosc = wzmacniacz1.zywotnosc - liczba_obr;
                     }
+
                     if(wzmacniacz1.zywotnosc <= 0)
                     {
                         Console.WriteLine("Nie żyjesz!");
                         break;
                     }
+
                     Console.WriteLine("Twoja kolej!");
                     Console.WriteLine("Co chcesz zrobić?");
                     if (wzmacniacz1.poziom_wzmocnienia == 0)
@@ -546,6 +550,7 @@ namespace paper_souls
                     Console.WriteLine("-> Stan many: " + wzmacniacz1.mana);
                     Console.WriteLine("-> Stan życia: " + wzmacniacz1.zywotnosc);
                     Console.WriteLine("-> Stan wzmocnienia: " + wzmacniacz1.poziom_wzmocnienia);
+                    Console.WriteLine("-> Stan zdrowia przeciwnika: " + ork2.zywotnosc);
                     decyzja_wzmaka = Convert.ToInt32(Console.ReadLine());
 
                     if (decyzja_wzmaka == 1)
@@ -581,15 +586,67 @@ namespace paper_souls
                     {
                         wzmacniacz1.Odpocznij();
                     }
+
                     if(ork2.zywotnosc <= 0)
                     {
                         Console.WriteLine("Pokonałeś orka wojownika!");
                         break;
                     }
+
                 }
             }
-#endregion
+            #endregion
+            #region Przygoda Templariusza
+            else if(wybor_postaci == 5)
+            {
+                Console.WriteLine("///////////////////////////////////////////////////////////");
+                Console.WriteLine("Napotkales przeciwnika -> " + szkielet1.imie);
+                Console.WriteLine("Co wiesz o przeciwniku?\nPoziom: " + szkielet1.poziom + "\nRasa: " + szkielet1.rasa + "\nTrudnosc: " + szkielet1.modyfikator_trudnosci);
+                Console.WriteLine("\nwalczysz(wpisz 1) czy uciekasz(wpisz 0)?");
+                int decyzja_templara = Convert.ToInt32(Console.ReadLine());
 
+                if (decyzja_templara == 0)
+                {
+                    Console.WriteLine("Nie możesz uciec!");
+                }
+
+                Console.WriteLine("Szkielet jest od Ciebie szybszy!");
+                int zlicz_obrazenia = szkielet1.Uderzenie_Mieczem();
+                templar1.zywotnosc = templar1.zywotnosc - zlicz_obrazenia;
+                Console.WriteLine("Szkielet zadaje " + zlicz_obrazenia + " obrażeń!");
+
+                Console.WriteLine("Teraz czas na Ciebie. Jaka decyzja?");
+                Console.WriteLine("1. uderz mieczem(15-20obrażeń)");
+                Console.WriteLine("2. wyczuj słabość(bonus do obrażeń)");
+                Console.WriteLine("3. aktywuj tryb riposty(zwraca 1/2 obrażeń przeciwnikowi)");
+                Console.WriteLine("4. zetnij głowę przeciwnikowi(warunek: żywotność wroga <= 30)");
+                Console.WriteLine("5. stwórz toporek z magii i rzuć nim w przeciwnika(15obrażeń, -20mana)");
+                Console.WriteLine("6. odpoczynek(+6hp, +15mana)");
+                Console.WriteLine("-> Stan many: " + templar1.mana);
+                Console.WriteLine("-> Stan życia: " + templar1.zywotnosc);
+                Console.WriteLine("-> Stan zdrowia przeciwnika: " + szkielet1.zywotnosc);
+                decyzja_templara = Convert.ToInt32(Console.ReadLine());
+                
+                if(decyzja_templara == 1)
+                {
+                    zlicz_obrazenia = templar1.Uderz_Mieczem();
+                    szkielet1.zywotnosc = szkielet1.zywotnosc - zlicz_obrazenia;
+                    Console.WriteLine("Uderzasz w stertę kości mieczem zadając " + zlicz_obrazenia + " obrażeń!");
+                }
+                else if(decyzja_templara == 2)
+                {
+                    templar1.Wyczuj_slabosc();
+                }
+                else if(decyzja_templara == 3)
+                {
+                    templar1.zaatakowany = true;
+                }
+                else if(decyzja_templara == 4)
+                {
+                    templar1.Sciecie(szkielet1.zywotnosc);
+                }
+            }
+            #endregion
             Console.ReadKey();
         }
     }

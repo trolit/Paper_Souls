@@ -35,7 +35,10 @@ namespace paper_souls
 
         public void Wzmocnienie()
         {
-            this.poziom_wzmocnienia = this.poziom_wzmocnienia + 1;
+            if (this.poziom_wzmocnienia < 4)
+            {
+                this.poziom_wzmocnienia = this.poziom_wzmocnienia + 1;
+            }
             this.zywotnosc = this.zywotnosc + 5;
             this.mana = this.mana + 5;
         }

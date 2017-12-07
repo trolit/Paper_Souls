@@ -14,7 +14,7 @@ namespace paper_souls
         :base(zywotnosc, imie, poziom, rasa, modyfikator_trudnosci)
         {
         }
-
+ 
         public int Uderzenie_Mieczem()
         {
             return random();

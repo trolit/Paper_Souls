@@ -23,7 +23,7 @@ namespace paper_souls
             {
                 Random bleeding = new Random();
                 int los = bleeding.Next(5, 20);
-                if (los > 14 && los <= 18)
+                if (los == 14 && los == 18)
                 {
                     Console.WriteLine("Ugryzienie wilka powoduje, że krwawisz przez 3 tury!");
                     krwawienie = true;

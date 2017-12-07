@@ -131,7 +131,7 @@ namespace paper_souls
                     Console.WriteLine("Siła: 3");
                     Console.WriteLine("Zręczność: 6");
                     Console.WriteLine("Inteligencja: 6");
-                    Console.WriteLine("Żywotność(HP): 92");
+                    Console.WriteLine("Żywotność(HP): 165");
                     Console.WriteLine("Mana(MP): 90");
                     Console.WriteLine("Max.poziom wzmocnienia: 3");
                     Console.WriteLine("___________________________________________________________");
@@ -151,7 +151,6 @@ namespace paper_souls
                     Console.WriteLine("Inteligencja: 2");
                     Console.WriteLine("Żywotność(HP): 129");
                     Console.WriteLine("Mana(MP): 94");
-                    Console.WriteLine("Poziom kondycji(CP): 100");
                     Console.WriteLine("___________________________________________________________");
                 }
                 else if (wybierz_bohatera == 6)
