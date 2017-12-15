@@ -25,5 +25,5 @@ Wciel się w rolę jednego z bohaterów:
 - Kusznik
 - Włócznik okrągłego stołu
 
-i wywalcz sobie przetrwanie!
+i pokonaj przeciwników na swej drodze.
 

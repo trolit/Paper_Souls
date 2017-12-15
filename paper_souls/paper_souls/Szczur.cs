@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace paper_souls
 {
-    class Szczur : Przeciwnik, I_RPGmethods, IRandomize
+    class Szczur : Przeciwnik,  IRandomize
     {
         protected int sila;
 

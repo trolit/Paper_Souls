@@ -2,11 +2,6 @@
 
 namespace paper_souls
 {
-    interface I_RPGmethods
-    {
-
-    }
-
     interface IRandomize
     {
         int random();
@@ -316,20 +311,17 @@ namespace paper_souls
                 {
                     obrazenia = mag1.Kula_ognia();
                     ork1.zywotnosc = ork1.zywotnosc - obrazenia;
-                    Console.WriteLine("Stan życia orczego kusznika: " + ork1.zywotnosc + " HP");
                 }
                 else if (decyzja_maga == 2 && mag1.mana >= 37)
                 {
                     obrazenia = mag1.Mrozenie();
                     ork1.zywotnosc = ork1.zywotnosc - obrazenia;
                     Console.WriteLine("Zamroziłeś przeciwnika powodując, że nie może on wykonać swojej tury!");
-                    Console.WriteLine("Stan życia orczego kusznika: " + ork1.zywotnosc + " HP");
                 }
                 else if (decyzja_maga == 3 && mag1.mana >= 39)
                 {
                     obrazenia = mag1.Piorun();
                     ork1.zywotnosc = ork1.zywotnosc - obrazenia;
-                    Console.WriteLine("Stan życia orczego kusznika: " + ork1.zywotnosc + " HP");
                 }
                 else if (decyzja_maga == 4)
                 {
@@ -379,6 +371,7 @@ namespace paper_souls
                     Console.WriteLine("6. ulecz się(-80mana, +75zdrowie)");
                     Console.WriteLine("-->Stan many:" + mag1.mana);
                     Console.WriteLine("-->Stan życia:" + mag1.zywotnosc);
+                    Console.WriteLine("-->Stan życia orczego kusznika: " + ork1.zywotnosc + " HP");
                     decyzja_maga = Convert.ToInt32(Console.ReadLine());
 
                     int damage;
@@ -386,20 +379,17 @@ namespace paper_souls
                     {
                         damage = mag1.Kula_ognia();
                         ork1.zywotnosc = ork1.zywotnosc - damage;
-                        Console.WriteLine("Stan życia orczego kusznika: " + ork1.zywotnosc + " HP");
                     }
                     else if (decyzja_maga == 2 && mag1.mana >= 37)
                     {
                         damage = mag1.Mrozenie();
                         ork1.zywotnosc = ork1.zywotnosc - damage;
                         Console.WriteLine("Zamroziłeś przeciwnika powodując, że nie może on wykonać swojej tury!");
-                        Console.WriteLine("Stan życia orczego kusznika: " + ork1.zywotnosc + " HP");
                     }
                     else if (decyzja_maga == 3 && mag1.mana >= 39)
                     {
                         damage = mag1.Piorun();
                         ork1.zywotnosc = ork1.zywotnosc - damage;
-                        Console.WriteLine("Stan życia orczego kusznika: " + ork1.zywotnosc + " HP");
                     }
                     else if (decyzja_maga == 4)
                     {
@@ -612,6 +602,7 @@ namespace paper_souls
 
                 Console.WriteLine("Szkielet jest od Ciebie szybszy!");
                 int zlicz_obrazenia = szkielet1.Uderzenie_Mieczem();
+                int zlicz_riposte = zlicz_obrazenia;
                 templar1.zywotnosc = templar1.zywotnosc - zlicz_obrazenia;
                 Console.WriteLine("Szkielet zadaje " + zlicz_obrazenia + " obrażeń!");
 
@@ -639,14 +630,87 @@ namespace paper_souls
                 }
                 else if(decyzja_templara == 3)
                 {
-                    templar1.zaatakowany = true;
+                    szkielet1.zywotnosc = szkielet1.zywotnosc - zlicz_riposte;
+                    Console.WriteLine("Szkielet otrzymuje " + zlicz_riposte + " obrażeń od riposty!");
                 }
                 else if(decyzja_templara == 4)
                 {
                     templar1.Sciecie(szkielet1.zywotnosc);
                 }
+                else if(decyzja_templara == 5)
+                {
+                    szkielet1.zywotnosc = szkielet1.zywotnosc - templar1.Rzut_Toporem();
+                }
+
+                int x;
+                for(x = 0; x < 100; )
+                {
+                    if (szkielet1.zywotnosc <= 40 && szkielet1.rekonstrukcja == 1)
+                    {
+                        szkielet1.Rekonstrukcja();
+                        Console.WriteLine("Szkielet wykorzystuje umiejętność rekonstrukcji i leczy się o 40 punktów zdrowia!");
+                    }
+                    else
+                    {
+                        zlicz_obrazenia = szkielet1.Uderzenie_Mieczem();
+                        templar1.zywotnosc = templar1.zywotnosc - zlicz_obrazenia;
+                        Console.WriteLine("Szkielet zadaje " + zlicz_obrazenia + " obrażeń!");
+                    }
+                    if(templar1.zywotnosc <= 0)
+                    {
+                        Console.WriteLine("Nie żyjesz!");
+                        break;
+                    }
+
+                    Console.WriteLine("Twoja kolej:");
+                    Console.WriteLine("1. uderz mieczem(15-20obrażeń)");
+                    Console.WriteLine("2. wyczuj słabość(bonus do obrażeń)");
+                    Console.WriteLine("3. aktywuj tryb riposty(zwraca 1/2 obrażeń przeciwnikowi)");
+                    Console.WriteLine("4. zetnij głowę przeciwnikowi(warunek: żywotność wroga <= 30)");
+                    Console.WriteLine("5. stwórz toporek z magii i rzuć nim w przeciwnika(15obrażeń, -20mana)");
+                    Console.WriteLine("6. odpoczynek(+6hp, +15mana)");
+                    Console.WriteLine("-> Stan many: " + templar1.mana);
+                    Console.WriteLine("-> Stan życia: " + templar1.zywotnosc);
+                    Console.WriteLine("-> Stan zdrowia przeciwnika: " + szkielet1.zywotnosc);
+                    decyzja_templara = Convert.ToInt32(Console.ReadLine());
+
+                    if (decyzja_templara == 1)
+                    {
+                        zlicz_obrazenia = templar1.Uderz_Mieczem();
+                        zlicz_riposte = zlicz_obrazenia;
+                        szkielet1.zywotnosc = szkielet1.zywotnosc - zlicz_obrazenia;
+                        Console.WriteLine("Uderzasz w stertę kości mieczem zadając " + zlicz_obrazenia + " obrażeń!");
+                    }
+                    else if (decyzja_templara == 2)
+                    {
+                        templar1.Wyczuj_slabosc();
+                    }
+                    else if (decyzja_templara == 3)
+                    {
+                        szkielet1.zywotnosc = szkielet1.zywotnosc - zlicz_riposte;
+                        Console.WriteLine("Szkielet otrzymuje " + zlicz_riposte + " obrażeń od riposty!");
+                    }
+                    else if (decyzja_templara == 4)
+                    {
+                        templar1.Sciecie(szkielet1.zywotnosc);
+                    }
+                    else if (decyzja_templara == 5)
+                    {
+                        szkielet1.zywotnosc = szkielet1.zywotnosc - templar1.Rzut_Toporem();
+                    }
+
+                    if (szkielet1.zywotnosc <= 0)
+                    {
+                        Console.WriteLine("Pokonujesz szkielet!");
+                        break;
+                    }
+                }
             }
             #endregion
+
+
+
+
             Console.ReadKey();
         }
     }

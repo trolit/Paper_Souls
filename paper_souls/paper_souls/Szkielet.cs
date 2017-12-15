@@ -8,7 +8,7 @@ namespace paper_souls
 {
     class Szkielet : Przeciwnik, IRandomize
     {
-        int rekonstrukcja = 1;
+        public int rekonstrukcja = 1;
 
         public Szkielet(int zywotnosc, string imie, int poziom, string rasa, int modyfikator_trudnosci)
         :base(zywotnosc, imie, poziom, rasa, modyfikator_trudnosci)
