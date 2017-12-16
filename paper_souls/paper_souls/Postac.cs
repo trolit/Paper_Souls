@@ -166,7 +166,7 @@ namespace paper_souls
                     Console.WriteLine("Siła: 6");
                     Console.WriteLine("Zręczność: 3");
                     Console.WriteLine("Inteligencja: 6");
-                    Console.WriteLine("Żywotność(HP): 100");
+                    Console.WriteLine("Żywotność(HP): 250");
                     Console.WriteLine("Mana(MP): 110");
                     Console.WriteLine("___________________________________________________________");
                 }

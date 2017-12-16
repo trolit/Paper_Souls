@@ -31,15 +31,6 @@ namespace paper_souls
             return 1;
         }
 
-        public int Riposta(int obrazenia)
-        {
-            if (zaatakowany == true)
-            {
-                return obrazenia / 2;
-            }
-            return 0;
-        }
-
         public int Sciecie(int zycie)
         {
             if(zycie <= 30)

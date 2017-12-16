@@ -27,5 +27,12 @@ namespace paper_souls
             int atak = random.Next(8, 21);
             return atak;
         }
+
+        public int Losuj_uderzenie()
+        {
+            Random los = new Random();
+            int dec = los.Next(1, 2);
+            return dec;
+        }
     }
 }

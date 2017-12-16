@@ -26,6 +26,7 @@ namespace paper_souls
             Wzmacniacz wzmacniacz1 = new Wzmacniacz(165, "Paseur", 4, "Rekin", "Straszny", 90, 3, 6, 6, 0);
             Templariusz templar1 = new Templariusz(94, 129, "Marc", 3, "Człowiek", "Bezlitosny", 2, 10, 1);
             Szkielet szkielet1 = new Szkielet(130, "Szkielet", 4, "Nieumarli", 5);
+            Druid druid1 = new Druid(250, "Malfurion", 4, "Człowiek", "Sędzia", 110, 6, 6, 3);
             #endregion
 
             int wybor_postaci = wybor_bohatera.Wybor_Bohatera();
@@ -138,7 +139,7 @@ namespace paper_souls
             }
             #endregion
             #region Przygoda Wojownika
-            else if(wybor_postaci == 2)
+            else if (wybor_postaci == 2)
             {
                 Console.WriteLine("///////////////////////////////////////////////////////////");
                 Console.WriteLine("Napotkales przeciwnika -> " + bazyliszek1.imie);
@@ -146,7 +147,7 @@ namespace paper_souls
                 Console.WriteLine("\nwalczysz(wpisz 1) czy uciekasz(wpisz 0)?");
                 int decyzja_woj = Convert.ToInt32(Console.ReadLine());
 
-                if(decyzja_woj == 1)
+                if (decyzja_woj == 1)
                 {
                     Console.WriteLine("Bazyliszek jest od Ciebie szybszy! Zaczyna pierwszy!");
                     int licz_obrazenia = bazyliszek1.Ukaszenie();
@@ -178,13 +179,13 @@ namespace paper_souls
                     {
                         wojownik1.Zioniecie_Ogniem();
                     }
-                    else if(decyzja_teraz == 4 && wojownik1.kondycja >= 35)
+                    else if (decyzja_teraz == 4 && wojownik1.kondycja >= 35)
                     {
                         licz_obrazenia = wojownik1.Szarza();
                         bazyliszek1.zywotnosc = bazyliszek1.zywotnosc - licz_obrazenia;
                         Console.WriteLine("Zadałeś " + licz_obrazenia + " obrażeń!");
                     }
-                    else if(decyzja_teraz == 5)
+                    else if (decyzja_teraz == 5)
                     {
                         wojownik1.Odpocznij();
                     }
@@ -194,13 +195,13 @@ namespace paper_souls
                     }
 
                     int x;
-                    for(x = 0; x < 2;)
+                    for (x = 0; x < 2;)
                     {
-                        if(wojownik1.szarzowanie == true)
+                        if (wojownik1.szarzowanie == true)
                         {
                             wojownik1.szarzowanie = false;
                         }
-                        else if(wojownik1.szarzowanie == false)
+                        else if (wojownik1.szarzowanie == false)
                         {
                             if (bazyliszek1.skamieniowany == false && bazyliszek1.stan_many >= 10)
                             {
@@ -213,7 +214,7 @@ namespace paper_souls
                                 Console.WriteLine("Bazyliszek zadaje " + licz_obrazenia + " obrażeń!");
                             }
                         }
-                        if(wojownik1.zywotnosc <= 0)
+                        if (wojownik1.zywotnosc <= 0)
                         {
                             Console.WriteLine("Zginąłeś!");
                             break;
@@ -267,7 +268,7 @@ namespace paper_souls
                                 Console.WriteLine("Nie udało się wykonać tego ruchu! Tracisz turę!");
                             }
                         }
-                        if(bazyliszek1.zywotnosc <= 0)
+                        if (bazyliszek1.zywotnosc <= 0)
                         {
                             Console.WriteLine("Bazyliszek pokonany!");
                             break;
@@ -289,7 +290,7 @@ namespace paper_souls
                 Console.WriteLine("\nwalczysz(wpisz 1) czy uciekasz(wpisz 0)?");
                 int decyzja_maga = Convert.ToInt32(Console.ReadLine());
 
-                if(decyzja_maga == 0)
+                if (decyzja_maga == 0)
                 {
                     Console.WriteLine("Nie możesz uciec!");
                 }
@@ -338,7 +339,7 @@ namespace paper_souls
                 }
 
                 int x;
-                for(x = 0; x < 2; )
+                for (x = 0; x < 2;)
                 {
                     if (mag1.zamrozenie == true)
                     {
@@ -353,12 +354,12 @@ namespace paper_souls
                             Console.WriteLine("Ork strzela z kuszy zadając Ci " + liczba_obr + " obrażeń.");
                             mag1.zywotnosc = mag1.zywotnosc - liczba_obr;
                         }
-                        else if(ork1.przeladowanie == true)
+                        else if (ork1.przeladowanie == true)
                         {
                             ork1.Przeladowanie();
                         }
                     }
-                    if(mag1.zywotnosc <= 0)
+                    if (mag1.zywotnosc <= 0)
                     {
                         Console.WriteLine("Zginąłeś!");
                     }
@@ -404,7 +405,7 @@ namespace paper_souls
                     {
                         mag1.Potezne_leczenie();
                     }
-                    if(ork1.zywotnosc <= 0)
+                    if (ork1.zywotnosc <= 0)
                     {
                         Console.WriteLine("Pokonałeś orka kusznika!");
                         break;
@@ -413,7 +414,7 @@ namespace paper_souls
             }
             #endregion
             #region Przygoda Wzmacniacza
-            else if(wybor_postaci == 4)
+            else if (wybor_postaci == 4)
             {
                 Console.WriteLine("///////////////////////////////////////////////////////////");
                 Console.WriteLine("Napotkales przeciwnika -> " + ork2.imie);
@@ -428,11 +429,11 @@ namespace paper_souls
 
                 Console.WriteLine("Jesteś szybszy od orka, zaczynasz pierwszy!");
                 Console.WriteLine("Co chcesz zrobić?");
-                if(wzmacniacz1.poziom_wzmocnienia == 0)
+                if (wzmacniacz1.poziom_wzmocnienia == 0)
                 {
                     Console.WriteLine("1. uderz toporem(9-14obrażeń)");
                 }
-                else if(wzmacniacz1.poziom_wzmocnienia == 1)
+                else if (wzmacniacz1.poziom_wzmocnienia == 1)
                 {
                     Console.WriteLine("1. uderz toporem(15-28obrażeń)");
                 }
@@ -457,57 +458,57 @@ namespace paper_souls
                 decyzja_wzmaka = Convert.ToInt32(Console.ReadLine());
                 int liczba_obr;
 
-                if(decyzja_wzmaka == 1)
+                if (decyzja_wzmaka == 1)
                 {
                     liczba_obr = wzmacniacz1.Uderz_Toporem();
                     ork2.zywotnosc = ork2.zywotnosc - liczba_obr;
                     Console.WriteLine("Zadajesz " + liczba_obr + " obrażeń!");
                 }
-                else if(decyzja_wzmaka == 2)
+                else if (decyzja_wzmaka == 2)
                 {
                     Console.WriteLine("Wzmacniasz poziom o +1");
                     wzmacniacz1.Wzmocnienie();
                 }
-                else if(decyzja_wzmaka == 3)
+                else if (decyzja_wzmaka == 3)
                 {
                     wzmacniacz1.Unik_Ataku();
                 }
-                else if(decyzja_wzmaka == 4)
+                else if (decyzja_wzmaka == 4)
                 {
                     Console.WriteLine("Transferujesz część magii aby wzmocnić następny atak!");
                     wzmacniacz1.Transfer_Magii();
                 }
-                else if(decyzja_wzmaka == 5)
+                else if (decyzja_wzmaka == 5)
                 {
                     Console.WriteLine("Poświęcasz turę aby stworzyć małą miksturę leczenia!");
                     wzmacniacz1.Tworz_miksture();
                 }
-                else if(decyzja_wzmaka == 6)
+                else if (decyzja_wzmaka == 6)
                 {
                     wzmacniacz1.Wypij_miksture();
                 }
-                else if(decyzja_wzmaka == 7)
+                else if (decyzja_wzmaka == 7)
                 {
                     wzmacniacz1.Odpocznij();
                 }
 
                 int x;
-                for(x = 0; x < 2; )
+                for (x = 0; x < 2;)
                 {
                     Console.WriteLine("Tura orka!");
-                    if(wzmacniacz1.unik == true)
+                    if (wzmacniacz1.unik == true)
                     {
                         Console.WriteLine("Ork chybił!");
                         wzmacniacz1.unik = false;
                     }
-                    else if(wzmacniacz1.unik == false)
+                    else if (wzmacniacz1.unik == false)
                     {
                         liczba_obr = ork2.Atak_Mieczem();
                         Console.WriteLine("Ork Wojownik zadaje Ci " + liczba_obr + " obrażeń!");
                         wzmacniacz1.zywotnosc = wzmacniacz1.zywotnosc - liczba_obr;
                     }
 
-                    if(wzmacniacz1.zywotnosc <= 0)
+                    if (wzmacniacz1.zywotnosc <= 0)
                     {
                         Console.WriteLine("Nie żyjesz!");
                         break;
@@ -577,7 +578,7 @@ namespace paper_souls
                         wzmacniacz1.Odpocznij();
                     }
 
-                    if(ork2.zywotnosc <= 0)
+                    if (ork2.zywotnosc <= 0)
                     {
                         Console.WriteLine("Pokonałeś orka wojownika!");
                         break;
@@ -587,7 +588,7 @@ namespace paper_souls
             }
             #endregion
             #region Przygoda Templariusza
-            else if(wybor_postaci == 5)
+            else if (wybor_postaci == 5)
             {
                 Console.WriteLine("///////////////////////////////////////////////////////////");
                 Console.WriteLine("Napotkales przeciwnika -> " + szkielet1.imie);
@@ -617,33 +618,33 @@ namespace paper_souls
                 Console.WriteLine("-> Stan życia: " + templar1.zywotnosc);
                 Console.WriteLine("-> Stan zdrowia przeciwnika: " + szkielet1.zywotnosc);
                 decyzja_templara = Convert.ToInt32(Console.ReadLine());
-                
-                if(decyzja_templara == 1)
+
+                if (decyzja_templara == 1)
                 {
                     zlicz_obrazenia = templar1.Uderz_Mieczem();
                     szkielet1.zywotnosc = szkielet1.zywotnosc - zlicz_obrazenia;
                     Console.WriteLine("Uderzasz w stertę kości mieczem zadając " + zlicz_obrazenia + " obrażeń!");
                 }
-                else if(decyzja_templara == 2)
+                else if (decyzja_templara == 2)
                 {
                     templar1.Wyczuj_slabosc();
                 }
-                else if(decyzja_templara == 3)
+                else if (decyzja_templara == 3)
                 {
                     szkielet1.zywotnosc = szkielet1.zywotnosc - zlicz_riposte;
                     Console.WriteLine("Szkielet otrzymuje " + zlicz_riposte + " obrażeń od riposty!");
                 }
-                else if(decyzja_templara == 4)
+                else if (decyzja_templara == 4)
                 {
                     templar1.Sciecie(szkielet1.zywotnosc);
                 }
-                else if(decyzja_templara == 5)
+                else if (decyzja_templara == 5)
                 {
                     szkielet1.zywotnosc = szkielet1.zywotnosc - templar1.Rzut_Toporem();
                 }
 
                 int x;
-                for(x = 0; x < 100; )
+                for (x = 0; x < 100;)
                 {
                     if (szkielet1.zywotnosc <= 40 && szkielet1.rekonstrukcja == 1)
                     {
@@ -656,7 +657,7 @@ namespace paper_souls
                         templar1.zywotnosc = templar1.zywotnosc - zlicz_obrazenia;
                         Console.WriteLine("Szkielet zadaje " + zlicz_obrazenia + " obrażeń!");
                     }
-                    if(templar1.zywotnosc <= 0)
+                    if (templar1.zywotnosc <= 0)
                     {
                         Console.WriteLine("Nie żyjesz!");
                         break;
@@ -707,11 +708,191 @@ namespace paper_souls
                 }
             }
             #endregion
+            #region Przygoda Druida
+            else if (wybor_postaci == 6)
+            {
+                Console.WriteLine("///////////////////////////////////////////////////////////");
+                Console.WriteLine("Napotkales przeciwnika -> " + ork3.imie);
+                Console.WriteLine("Co wiesz o przeciwniku?\nPoziom: " + ork3.poziom + "\nRasa: " + ork3.rasa + "\nTrudnosc: " + ork3.modyfikator_trudnosci);
+                Console.WriteLine("\nwalczysz(wpisz 1) czy uciekasz(wpisz 0)?");
+                int decyzja_druida = Convert.ToInt32(Console.ReadLine());
+
+                if (decyzja_druida == 0)
+                {
+                    Console.WriteLine("Nie możesz uciec!");
+                }
+
+                Console.WriteLine("Ork jest od Ciebie szybszy!");
+                int zlicz_obrazenia = szkielet1.Uderzenie_Mieczem();
+                int zlicz_riposte = zlicz_obrazenia;
+                druid1.zywotnosc = druid1.zywotnosc - zlicz_obrazenia;
+                Console.WriteLine("Ork złodziej zadaje " + zlicz_obrazenia + " obrażeń!");
+
+                Console.WriteLine("Twoja kolej !");
+                Console.WriteLine("1. uderz pazurami(7-12obrażeń, 20% szansy na wywołanie krwawienia)");
+                Console.WriteLine("2. ogromne leczenie(+90hp, -100mana)");
+                Console.WriteLine("3. przywołaj do walki wilka(-100mana)");
+                Console.WriteLine("4. stwórz głaz i rzuć nim w przeciwnika(-35mana, 10-30obrażeń)");
+                Console.WriteLine("5. odpoczynek(+6hp, +15mana)");
+                Console.WriteLine("-> Stan many: " + druid1.mana);
+                Console.WriteLine("-> Stan życia: " + druid1.zywotnosc);
+                Console.WriteLine("-> Stan zdrowia przeciwnika: " + ork3.zywotnosc);
+                decyzja_druida = Convert.ToInt32(Console.ReadLine());
+
+                if(decyzja_druida == 1)
+                {
+                    int atak = druid1.Pazury();
+                    ork3.zywotnosc = ork3.zywotnosc - atak;
+                }
+                else if(decyzja_druida == 2)
+                {
+                    druid1.Ogromne_leczenie();
+                    Console.WriteLine("Poświęcasz swoje zasoby aby się uleczyć!");
+                }
+                else if(decyzja_druida == 3)
+                {
+                    druid1.Przywolaj_wilka();
+                }
+                else if(decyzja_druida == 4)
+                {
+                    druid1.los_glaz();
+                }
+                else if(decyzja_druida == 5)
+                {
+                    druid1.Odpocznij();
+                }
+
+                int x;
+                int zlicz_obr;
+                int zycie_wilka = 120;
+
+                for(x = 0; x < 100; )
+                {
+                    if(druid1.czy_wilk == true)
+                    {
+                        Console.WriteLine("Tura wilka: ");
+                        Console.WriteLine("1. Ugryzienie(9-18obrażeń)");
+                        Console.WriteLine("2. Lizanie ran(+15zdrowia)");
+                        Console.WriteLine("3. Uleczenie pana(+20zdrowia)");
+                        Console.WriteLine("-> Stan życia: " + zycie_wilka);
+                        Console.WriteLine("-> Stan życia pana: " + druid1.zywotnosc);
+                        Console.WriteLine("-> Stan życia orka: " + ork3.zywotnosc);
+                        int decyzja_wilka = Convert.ToInt32(Console.ReadLine());
+                        Random random = new Random();
+                        int atak = random.Next(9, 18);
+
+                        if(decyzja_wilka == 1)
+                        {
+                            ork3.zywotnosc = ork3.zywotnosc - atak;
+                            Console.WriteLine("Wilk zadaje " + atak + " obrażeń!");
+                        }
+                        else if(decyzja_wilka == 2)
+                        {
+                            zycie_wilka = zycie_wilka + 15;
+                        }
+                        else if(decyzja_wilka == 3)
+                        {
+                            druid1.zywotnosc = druid1.zywotnosc + 20;
+                        }
+
+                        if (ork3.zywotnosc <= 0)
+                        {
+                            Console.WriteLine("Pokonujesz orka złodzieja!");
+                            break;
+                        }
+
+                        Console.WriteLine("Kolej orka!");
+                        if (druid1.czy_wilk == true)
+                        {
+                            int opcja = ork3.Losuj_uderzenie();
+
+                            if(opcja == 1)
+                            {
+                                zlicz_obr = ork3.Dzgniecie();
+                                druid1.zywotnosc = druid1.zywotnosc - zlicz_obr;
+                                Console.WriteLine("Ork złodziej zadaje Ci " + zlicz_obr + " obrażeń!");
+                                if(druid1.zywotnosc <= 0)
+                                {
+                                    Console.WriteLine("Nie żyjesz!");
+                                    break;
+                                }
+                            }
+                            else if(opcja == 2)
+                            {
+                                zlicz_obr = ork3.Dzgniecie();
+                                zycie_wilka = zycie_wilka - zlicz_obr;
+                                Console.WriteLine("Ork złodziej atakuje wilka i zadaje mu " + zlicz_obr + " obrażeń!");
+                                if (zycie_wilka <= 0)
+                                {
+                                    Console.WriteLine("Wilk nie żyje!");
+                                    druid1.czy_wilk = false;
+                                }
+                            }
+                        }
+                        else if(druid1.czy_wilk == false)
+                        {
+                            zlicz_obr = ork3.Dzgniecie();
+                            druid1.zywotnosc = druid1.zywotnosc - zlicz_obr;
+                            Console.WriteLine("Ork złodziej zadaje Ci " + zlicz_obr + " obrażeń!");
+                            if (druid1.zywotnosc <= 0)
+                            {
+                                Console.WriteLine("Nie żyjesz!");
+                                break;
+                            }
+                        }
+
+                        Console.WriteLine("Teraz kolej Malfuriona !");
+                        Console.WriteLine("1. uderz pazurami(7-12obrażeń, 20% szansy na wywołanie krwawienia)");
+                        Console.WriteLine("2. ogromne leczenie(+90hp, -100mana)");
+                        Console.WriteLine("3. przywołaj do walki wilka(-100mana)");
+                        Console.WriteLine("4. stwórz głaz i rzuć nim w przeciwnika(-35mana, 10-30obrażeń)");
+                        Console.WriteLine("5. odpoczynek(+6hp, +15mana)");
+                        Console.WriteLine("-> Stan many: " + druid1.mana);
+                        Console.WriteLine("-> Stan życia: " + druid1.zywotnosc);
+                        Console.WriteLine("-> Stan zdrowia przeciwnika: " + ork3.zywotnosc);
+                        if(druid1.czy_wilk == true)
+                        {
+                            Console.WriteLine("-> Stan zdrowia wilka: " + zycie_wilka);
+                        }
+
+                        decyzja_druida = Convert.ToInt32(Console.ReadLine());
+
+                        if (decyzja_druida == 1)
+                        {
+                            ork3.zywotnosc = ork3.zywotnosc - druid1.Pazury();
+                        }
+                        else if (decyzja_druida == 2)
+                        {
+                            druid1.Ogromne_leczenie();
+                            Console.WriteLine("Poświęcasz swoje zasoby aby się uleczyć!");
+                        }
+                        else if (decyzja_druida == 3)
+                        {
+                            druid1.Przywolaj_wilka();
+                        }
+                        else if (decyzja_druida == 4)
+                        {
+                            zlicz_obr = druid1.los_glaz();
+                            ork3.zywotnosc = ork3.zywotnosc - zlicz_obr;
+                        }
+                        else if (decyzja_druida == 5)
+                        {
+                            druid1.Odpocznij();
+                        }
+
+                        if(ork3.zywotnosc <= 0)
+                        {
+                            Console.WriteLine("Pokonujesz orka złodzieja!");
+                            break;
+                        }
+                    }
+                }
+                #endregion
 
 
 
-
-            Console.ReadKey();
+                Console.ReadKey();
+            }
         }
     }
 }
