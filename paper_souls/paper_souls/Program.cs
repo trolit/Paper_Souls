@@ -27,6 +27,7 @@ namespace paper_souls
             Templariusz templar1 = new Templariusz(94, 129, "Marc", 3, "Człowiek", "Bezlitosny", 2, 10, 1);
             Szkielet szkielet1 = new Szkielet(130, "Szkielet", 4, "Nieumarli", 5);
             Druid druid1 = new Druid(250, "Malfurion", 4, "Człowiek", "Sędzia", 110, 6, 6, 3);
+            Snajper snajper1 = new Snajper(10, 100, "Zajcev", 6, "Człowiek", "Sokole Oko", 7, 6, 5);
             #endregion
 
             int wybor_postaci = wybor_bohatera.Wybor_Bohatera();
@@ -886,13 +887,26 @@ namespace paper_souls
                             break;
                         }
                     }
-                }
-                #endregion
-
-
-
-                Console.ReadKey();
+                }     
             }
+            #endregion
+            else if(wybor_postaci == 7)
+            {
+                // tu snajper
+            }
+            else if(wybor_postaci == 8)
+            {
+                // tu kusznik
+            }
+            else if(wybor_postaci == 9)
+            {
+                // tu włócznik
+            }
+
+
+
+
+            Console.ReadKey();
         }
     }
 }

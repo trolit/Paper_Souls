@@ -215,7 +215,7 @@ namespace paper_souls
                     Console.WriteLine("+ ma do pomocy gwardię łuczników");
                     Console.WriteLine("+ jego broń nasycona jest magią(atak kosztuje manę i kondycję)");
                     Console.WriteLine("+ umie wyciszyć umysł odzyskując zdrowie, kondycję i manę");
-                    Console.WriteLine("+ dręczy go masowampiryzm");
+                    Console.WriteLine("+ dręczy go wampiryzm");
                     Console.WriteLine("\nKarta postaci: \n");
                     Console.WriteLine("Poziom: 6");
                     Console.WriteLine("Siła: 7");
